@@ -25,6 +25,7 @@ int RtoG(double range,
 int main()
 {
 	double range = 0; double bearing=0;
+	//WI = Wallops Islands, PR = Puerto Rico
 	double WIlat = 37; double WIlong = -75; double PRlat = 18; double PRlong = -66;
 	GIS2Radar(&range, &bearing, WIlong, WIlat, PRlong, PRlat);
 	printf("The range is %f meters and the bearing is %f degrees\n",range,bearing);
