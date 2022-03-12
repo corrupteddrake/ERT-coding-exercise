@@ -296,7 +296,6 @@ double  Medianfinder(double A[], int Length)
 		}
 		DCopyArray(B, A, Length);
 	}
-	printf("%d %d ", Length, Length / 2);
 	if (Length % 2 == 1)
 	{
 		return A[Length / 2];
