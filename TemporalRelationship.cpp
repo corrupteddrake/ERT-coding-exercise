@@ -10,13 +10,17 @@ from the oldest to the newest then write a median filter function that calculate
 #include <string.h>
 #include <math.h>
 
-	
+// These are the funtion that reads and writes the file.	
 void Readfile(int yyyy[], int MM[], int dd[], int DDD[],int HH[], int mm[], int ss[],int Cscore[], double foF2[], double hmF2[],int*Length, double foF1[], double foE[], double foEs[], double hEs[], double hmF1[], double hmE[], double B0[], double B1[]/*, double D1[]*/);
 void Writefile(int yyyy[], int MM[], int dd[], int DDD[], int HH[], int mm[], int ss[], int Cscore[], double foF2[], double hmF2[], int Length, double foF1[], double foE[], double foEs[], double hEs[], double hmF1[], double hmE[], double B0[], double B1[]/*, double D1[]*/);
+
+// These are the funtion that sorts the Values, it uses a merge sort to do so.
 void sortVals(int yyyy[], int MM[], int dd[], int DDD[], int HH[], int mm[], int ss[], int Cscore[], double foF2[], double hmF2[], int Length, double foF1[], double foE[], double foEs[], double hEs[], double hmF1[], double hmE[], double B0[], double B1[]);
 void Merge(int yyyy[], int MM[], int dd[], int DDD[], int HH[], int mm[], int ss[], int Cscore[], double foF2[], double hmF2[], double foF1[], double foE[], double foEs[], double hEs[], double hmF1[], double hmE[], double B0[], double B1[], int iLeft, int iRight, int iEnd, int Tyyyy[], int TMM[], int Tdd[], int TDDD[], int THH[], int Tmm[], int Tss[], int TCscore[], double TfoF2[], double ThmF2[], double TfoF1[], double TfoE[], double TfoEs[], double ThEs[], double ThmF1[], double ThmE[], double TB0[], double TB1[]);
 void ICopyArray(int B[], int A[], int Length);
 void DCopyArray(double B[], double A[], int Length);
+
+// These are the funtion that finds the median
 double  Medianfinder(double A[], int Length);
 void SMerge(double A[], int iLeft,int iRight, int iEnd, double B[]);
 
