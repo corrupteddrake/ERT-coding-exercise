@@ -6,14 +6,18 @@ import math
 import os
 import numpy as np
 import plotly.graph_objects as go
+# The data will be saved to data2.dat.
 f = open("data2.dat", "w")
+# This is the initial data
 x= [121.39,126.19,130.27,127.42,126.14,125.96,123.15,130.5,129.08,122.74]
 y=[13.51,12.02,13.11,10.09,15.33,14,10.88,11.18,15.78,15.82]
 z=[1.494,1.934,2.148,9.155,2.221,8.1,2.039,1.916,3.729,7.137]
 
+# This funtion returned the distance between two points
 def distance(x1, y1, x2, y2):
     return math.sqrt((x1-x2)**2 + (y1 -y2)**2)
 
+# This funtion returns the IDW interpolated data
 def idw_npoint(xz, yz, n_point, p):
     r = 1  # block radius iteration distance
     nf = 0
@@ -75,6 +79,8 @@ x_idw_list=[]
 y_idw_list=[]
 z_head=[]
 
+# This writes the interpolation of the spatial grid that has 50 rows and 70 columns
+# with a longitude range [121.0, 131.0] and latitude range [10.0, 16.0] into "Data2.dat"
 for i in range(nx):
     xz = x_init + wn * i
     x_idw_list.append(xz)
