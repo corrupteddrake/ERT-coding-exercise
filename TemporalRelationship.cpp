@@ -20,20 +20,27 @@ void Merge(int yyyy[], int MM[], int dd[], int DDD[], int HH[], int mm[], int ss
 void ICopyArray(int B[], int A[], int Length);
 void DCopyArray(double B[], double A[], int Length);
 
-// These are the funtion that finds the median
+// These are the funtions that finds the median
 double  Medianfinder(double A[], int Length);
 void SMerge(double A[], int iLeft,int iRight, int iEnd, double B[]);
 
 int main()
 {
-
+	// Variables for the year, month, day, and Dday
 	int yyyy[500], MM[500], dd[500], DDD[500];
+	// Variables for the Hour, minute, second, and Cscore
 	int HH[500], mm[500], ss[500], Cscore[500];
+	// Variables for the other doubles in the file
 	double foF2[500], hmF2[500], foF1[500], foE[500], foEs[500], hEs[500], hmF1[500], hmE[500], B0[500], B1[500]/*, D1[500]*/;
+	// Variable for Length
 	int Length = 0;
+	//Read the file
 	Readfile(yyyy, MM, dd, DDD, HH, mm, ss, Cscore, foF2, hmF2, &Length, foF1, foE, foEs, hEs, hmF1, hmE, B0, B1/*, D1*/);
+	//Sort the values from file
 	sortVals(yyyy, MM, dd, DDD, HH, mm, ss, Cscore, foF2, hmF2, Length, foF1, foE, foEs, hEs, hmF1, hmE, B0, B1);
+	//Write the file
 	Writefile(yyyy, MM, dd, DDD, HH, mm, ss, Cscore, foF2, hmF2, Length, foF1, foE, foEs, hEs, hmF1, hmE, B0, B1/*, D1*/);
+	// Find and print the median of foF2 and hmF2.
 	printf("The Median of foF2 is %.3f\n",Medianfinder(foF2,Length));
 	printf("The Median of hmF2 is %.3f\n\n", Medianfinder(hmF2, Length));
 	
@@ -41,15 +48,18 @@ int main()
 
 void Readfile(int yyyy[], int MM[], int dd[], int DDD[], int HH[], int mm[], int ss[], int Cscore[], double foF2[], double hmF2[],int* Length, double foF1[], double foE[], double foEs[], double hEs[], double hmF1[], double hmE[], double B0[], double B1[]/*, double D1[]*/)
 {
+	// Open the file, set to read
 	FILE* froam = fopen("AU930_ROAM.TXT", "r");
 	char Fchar = getc(froam);
+	// Temporary variables that hold the string form of the double variables
 	char c1[10], c2[10],c3[10], c4[10], c5[10], c6[10], c7[10], c8[10], c9[10], c10[10];
-	char* ptr;
+	//Ignore the first 2 lines
 	while (Fchar != '\n')
 	{
 		Fchar = getc(froam);
 	}
 	Fchar = getc(froam);
+	//Read the data and assign it to the arrays
 	while (1)
 	{
 		
@@ -59,7 +69,7 @@ void Readfile(int yyyy[], int MM[], int dd[], int DDD[], int HH[], int mm[], int
 		}
 		if (*c1!='-')
 		{ 
-			foF2[*Length] = strtod(c1, &ptr);
+			foF2[*Length] = strtod(c1, NULL);
 		}
 		else
 		{
@@ -67,7 +77,7 @@ void Readfile(int yyyy[], int MM[], int dd[], int DDD[], int HH[], int mm[], int
 		}
 		if (*c2 != '-')
 		{
-			foF1[*Length] = strtod(c2, &ptr);
+			foF1[*Length] = strtod(c2, NULL);
 		}
 		else
 		{
@@ -75,7 +85,7 @@ void Readfile(int yyyy[], int MM[], int dd[], int DDD[], int HH[], int mm[], int
 		}
 		if (*c3 != '-')
 		{
-			foE[*Length] = strtod(c3, &ptr);
+			foE[*Length] = strtod(c3, NULL);
 		}
 		else
 		{
@@ -83,7 +93,7 @@ void Readfile(int yyyy[], int MM[], int dd[], int DDD[], int HH[], int mm[], int
 		}
 		if (*c4 != '-')
 		{
-			foEs[*Length] = strtod(c4, &ptr);
+			foEs[*Length] = strtod(c4, NULL);
 		}
 		else
 		{
@@ -91,7 +101,7 @@ void Readfile(int yyyy[], int MM[], int dd[], int DDD[], int HH[], int mm[], int
 		}
 		if (*c5 != '-')
 		{
-			hEs[*Length] = strtod(c5, &ptr);
+			hEs[*Length] = strtod(c5, NULL);
 		}
 		else
 		{
@@ -99,7 +109,7 @@ void Readfile(int yyyy[], int MM[], int dd[], int DDD[], int HH[], int mm[], int
 		}
 		if (*c6 != '-')
 		{
-			hmF2[*Length] = strtod(c6, &ptr);
+			hmF2[*Length] = strtod(c6, NULL);
 		}
 		else
 		{
@@ -107,7 +117,7 @@ void Readfile(int yyyy[], int MM[], int dd[], int DDD[], int HH[], int mm[], int
 		}
 		if (*c7 != '-')
 		{
-			hmF1[*Length] = strtod(c7, &ptr);
+			hmF1[*Length] = strtod(c7, NULL);
 		}
 		else
 		{
@@ -115,7 +125,7 @@ void Readfile(int yyyy[], int MM[], int dd[], int DDD[], int HH[], int mm[], int
 		}
 		if (*c8 != '-')
 		{
-			hmE[*Length] = strtod(c8, &ptr);
+			hmE[*Length] = strtod(c8, NULL);
 		}
 		else
 		{
@@ -123,7 +133,7 @@ void Readfile(int yyyy[], int MM[], int dd[], int DDD[], int HH[], int mm[], int
 		}
 		if (*c9 != '-')
 		{
-			B0[*Length] = strtod(c9, &ptr);
+			B0[*Length] = strtod(c9, NULL);
 		}
 		else
 		{
@@ -131,7 +141,7 @@ void Readfile(int yyyy[], int MM[], int dd[], int DDD[], int HH[], int mm[], int
 		}
 		if (*c10 != '-')
 		{
-			B1[*Length] = strtod(c10, &ptr);
+			B1[*Length] = strtod(c10, NULL);
 		}
 		else
 		{
@@ -140,13 +150,17 @@ void Readfile(int yyyy[], int MM[], int dd[], int DDD[], int HH[], int mm[], int
 		Fchar = getc(froam);
 		*Length = *Length + 1;
 	}
+	// Close file
 	fclose(froam);
 }
 
 void Writefile(int yyyy[], int MM[], int dd[], int DDD[], int HH[], int mm[], int ss[], int Cscore[], double foF2[], double hmF2[], int Length, double foF1[], double foE[], double foEs[], double hEs[], double hmF1[], double hmE[], double B0[], double B1[]/*, double D1[]*/)
 {
+	// Open the file, set to write
 	FILE* froam = fopen("AU930_ROAM2.TXT", "w");
+	// Write the two lines of the file at the begining
 	fprintf(froam, "yyyy.MM.dd (DDD) HH:mm:ss C-score   foF2  foF1   foE  foEs   h`Es   hmF2   hmF1    hmE    B0   B1   D1\n\n");
+	// Write from the variables to the file.
 	for (int i = 0; i < Length; i++)
 	{
 		char c[100];
@@ -220,6 +234,8 @@ void Writefile(int yyyy[], int MM[], int dd[], int DDD[], int HH[], int mm[], in
 			sprintf(c, "%s    ---", c);
 		fprintf(froam,"%s\n", c);
 	}
+	// Close file
+	fclose(froam);
 }
 
 //Merge Sort
@@ -229,9 +245,10 @@ void sortVals(int yyyy[], int MM[], int dd[], int DDD[], int HH[], int mm[], int
 	int THH[500], Tmm[500], Tss[500], TCscore[500];
 	double TfoF2[500], ThmF2[500], TfoF1[500], TfoE[500], TfoEs[500], ThEs[500], ThmF1[500], ThmE[500], TB0[500], TB1[500]/*, D1[500]*/;
 	int width;
-	
+	// Start Split to avoid recursion
 	for (width = 1; width < Length; width = 2 * width)
 	{
+		// Do the merging of the pairs of split arrays
 		int i;
 		for (i = 0; i < Length; i = i + 2 * width)
 		{
@@ -278,11 +295,14 @@ void Merge(int yyyy[], int MM[], int dd[], int DDD[], int HH[], int mm[], int ss
 	}
 }
 
+// This is integer array Copy
 void ICopyArray(int B[], int A[], int Length)
 {
 	for (int i = 0; i < Length; i++)
 		A[i] = B[i];
 }
+
+// This is Double array Copy
 void DCopyArray(double B[], double A[], int Length)
 {
 	for (int i = 0; i < Length; i++)
@@ -291,6 +311,7 @@ void DCopyArray(double B[], double A[], int Length)
 
 double  Medianfinder(double A[], int Length)
 {
+	// Do a merge sort of the
 	double B[500];
 	for (int width = 1; width < Length; width = 2 * width)
 	{
