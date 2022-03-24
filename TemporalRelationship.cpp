@@ -283,7 +283,7 @@ void Merge(int yyyy[], int MM[], int dd[], int DDD[], int HH[], int mm[], int ss
 	int i = iLeft, j = iRight;
 	for (int k = iLeft; k < iEnd; k++) {
 
-		if (i < iRight && (j >= iEnd || DDD[i] > DDD[j] || (DDD[i] == DDD[j] && HH[i] > HH[j]) || (DDD[i] == DDD[j] && HH[i] == HH[j] && mm[i] > mm[j]) || (DDD[i] == DDD[j] && HH[i] == HH[j] && mm[i] == mm[j] && ss[i] >= ss[j])))
+		if (i < iRight && (j >= iEnd || DDD[i] < DDD[j] || (DDD[i] == DDD[j] && HH[i] < HH[j]) || (DDD[i] == DDD[j] && HH[i] == HH[j] && mm[i] < mm[j]) || (DDD[i] == DDD[j] && HH[i] == HH[j] && mm[i] == mm[j] && ss[i] <= ss[j])))
 		{
 			Tyyyy[k] = yyyy[i]; TMM[k] = MM[i]; Tdd[k] = dd[i]; TDDD[k] = DDD[i]; THH[k] = HH[i]; Tmm[k] = mm[i]; Tss[k] = ss[i]; TCscore[k] = Cscore[i];
 			TfoF2[k] = foF2[i]; ThmF2[k] = hmF2[i]; TfoF1[k] = foF1[i]; TfoE[k] = foE[i]; TfoEs[k] = foEs[i]; ThEs[k] = hEs[i]; ThmF1[k] = hmF1[i]; ThmE[k] = hmE[i]; TB0[k] = B0[i]; TB1[k] = B1[i];
