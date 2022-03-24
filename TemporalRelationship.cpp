@@ -2,6 +2,9 @@
 Assessment Temporal relationship: In C, without using any third-party library except standard C library,
 write a function that can sort the following entries by date and time,
 from the oldest to the newest then write a median filter function that calculates foF2 and hmF2.
+
+This requires AU930_ROAM.TXT to be in the source folder 
+The sorted verion will be created in the source folder called AU930_ROAM2.TXT
 */
 
 #define _CRT_SECURE_NO_DEPRECATE
@@ -11,7 +14,7 @@ from the oldest to the newest then write a median filter function that calculate
 #include <math.h>
 
 // These are the funtion that reads and writes the file.	
-void Readfile(int yyyy[], int MM[], int dd[], int DDD[],int HH[], int mm[], int ss[],int Cscore[], double foF2[], double hmF2[],int*Length, double foF1[], double foE[], double foEs[], double hEs[], double hmF1[], double hmE[], double B0[], double B1[]/*, double D1[]*/);
+void Readfile(int yyyy[], int MM[], int dd[], int DDD[], int HH[], int mm[], int ss[], int Cscore[], double foF2[], double hmF2[], int* Length, double foF1[], double foE[], double foEs[], double hEs[], double hmF1[], double hmE[], double B0[], double B1[]/*, double D1[]*/);
 void Writefile(int yyyy[], int MM[], int dd[], int DDD[], int HH[], int mm[], int ss[], int Cscore[], double foF2[], double hmF2[], int Length, double foF1[], double foE[], double foEs[], double hEs[], double hmF1[], double hmE[], double B0[], double B1[]/*, double D1[]*/);
 
 // These are the funtion that sorts the Values, it uses a merge sort to do so.
@@ -22,7 +25,7 @@ void DCopyArray(double B[], double A[], int Length);
 
 // These are the funtions that finds the median
 double  Medianfinder(double A[], int Length);
-void SMerge(double A[], int iLeft,int iRight, int iEnd, double B[]);
+void SMerge(double A[], int iLeft, int iRight, int iEnd, double B[]);
 
 int main()
 {
@@ -41,18 +44,18 @@ int main()
 	//Write the file
 	Writefile(yyyy, MM, dd, DDD, HH, mm, ss, Cscore, foF2, hmF2, Length, foF1, foE, foEs, hEs, hmF1, hmE, B0, B1/*, D1*/);
 	// Find and print the median of foF2 and hmF2.
-	printf("The Median of foF2 is %.3f\n",Medianfinder(foF2,Length));
+	printf("The Median of foF2 is %.3f\n", Medianfinder(foF2, Length));
 	printf("The Median of hmF2 is %.3f\n\n", Medianfinder(hmF2, Length));
-	
+
 }
 
-void Readfile(int yyyy[], int MM[], int dd[], int DDD[], int HH[], int mm[], int ss[], int Cscore[], double foF2[], double hmF2[],int* Length, double foF1[], double foE[], double foEs[], double hEs[], double hmF1[], double hmE[], double B0[], double B1[]/*, double D1[]*/)
+void Readfile(int yyyy[], int MM[], int dd[], int DDD[], int HH[], int mm[], int ss[], int Cscore[], double foF2[], double hmF2[], int* Length, double foF1[], double foE[], double foEs[], double hEs[], double hmF1[], double hmE[], double B0[], double B1[]/*, double D1[]*/)
 {
 	// Open the file, set to read
 	FILE* froam = fopen("AU930_ROAM.TXT", "r");
 	char Fchar = getc(froam);
 	// Temporary variables that hold the string form of the double variables
-	char c1[10], c2[10],c3[10], c4[10], c5[10], c6[10], c7[10], c8[10], c9[10], c10[10];
+	char c1[10], c2[10], c3[10], c4[10], c5[10], c6[10], c7[10], c8[10], c9[10], c10[10];
 	//Ignore the first 2 lines
 	while (Fchar != '\n')
 	{
@@ -62,13 +65,13 @@ void Readfile(int yyyy[], int MM[], int dd[], int DDD[], int HH[], int mm[], int
 	//Read the data and assign it to the arrays
 	while (1)
 	{
-		
-		fscanf(froam, "%d.%d.%d (%d) %d:%d:%d %d %s %s %s %s %s %s %s %s %s %s", &yyyy[*Length], &MM[*Length], &dd[*Length], &DDD[*Length], &HH[*Length], &mm[*Length], &ss[*Length],&Cscore[*Length], c1, c2, c3, c4, c5, c6, c7, c8, c9, c10);
+
+		fscanf(froam, "%d.%d.%d (%d) %d:%d:%d %d %s %s %s %s %s %s %s %s %s %s", &yyyy[*Length], &MM[*Length], &dd[*Length], &DDD[*Length], &HH[*Length], &mm[*Length], &ss[*Length], &Cscore[*Length], c1, c2, c3, c4, c5, c6, c7, c8, c9, c10);
 		if (feof(froam)) {
 			break;
 		}
-		if (*c1!='-')
-		{ 
+		if (*c1 != '-')
+		{
 			foF2[*Length] = strtod(c1, NULL);
 		}
 		else
@@ -165,7 +168,7 @@ void Writefile(int yyyy[], int MM[], int dd[], int DDD[], int HH[], int mm[], in
 	{
 		char c[100];
 		sprintf(c, "%d", yyyy[i]);
-		if (MM[i]<10)
+		if (MM[i] < 10)
 			sprintf(c, "%s.0%d", c, MM[i]);
 		else
 			sprintf(c, "%s.%d", c, MM[i]);
@@ -175,7 +178,7 @@ void Writefile(int yyyy[], int MM[], int dd[], int DDD[], int HH[], int mm[], in
 			sprintf(c, "%s.%d", c, dd[i]);
 		if (DDD[i] < 100)
 			sprintf(c, "%s (0%d)", c, DDD[i]);
-		else if(DDD[i] < 10)
+		else if (DDD[i] < 10)
 			sprintf(c, "%s (00%d)", c, DDD[i]);
 		else
 			sprintf(c, "%s (%d)", c, DDD[i]);
@@ -192,7 +195,7 @@ void Writefile(int yyyy[], int MM[], int dd[], int DDD[], int HH[], int mm[], in
 		else
 			sprintf(c, "%s:%d", c, ss[i]);
 		sprintf(c, "%s\t%d", c, Cscore[i]);
-		if (foF2[i]!=0)
+		if (foF2[i] != 0)
 			sprintf(c, "%s %.3f", c, foF2[i]);
 		else
 			sprintf(c, "%s    ---", c);
@@ -216,7 +219,7 @@ void Writefile(int yyyy[], int MM[], int dd[], int DDD[], int HH[], int mm[], in
 			sprintf(c, "%s %.3f", c, hmF2[i]);
 		else
 			sprintf(c, "%s    ---", c);
-		if (hmF1[i]!=0)
+		if (hmF1[i] != 0)
 			sprintf(c, "%s %.3f", c, hmF1[i]);
 		else
 			sprintf(c, "%s    ---", c);
@@ -232,14 +235,14 @@ void Writefile(int yyyy[], int MM[], int dd[], int DDD[], int HH[], int mm[], in
 			sprintf(c, "%s %.3f", c, B1[i]);
 		else
 			sprintf(c, "%s    ---", c);
-		fprintf(froam,"%s\n", c);
+		fprintf(froam, "%s\n", c);
 	}
 	// Close file
 	fclose(froam);
 }
 
 //Merge Sort
-void sortVals(int yyyy[], int MM[], int dd[], int DDD[], int HH[], int mm[], int ss[], int Cscore[], double foF2[], double hmF2[],int Length, double foF1[], double foE[], double foEs[], double hEs[], double hmF1[], double hmE[], double B0[], double B1[])
+void sortVals(int yyyy[], int MM[], int dd[], int DDD[], int HH[], int mm[], int ss[], int Cscore[], double foF2[], double hmF2[], int Length, double foF1[], double foE[], double foEs[], double hEs[], double hmF1[], double hmE[], double B0[], double B1[])
 {
 	int Tyyyy[500], TMM[500], Tdd[500], TDDD[500];
 	int THH[500], Tmm[500], Tss[500], TCscore[500];
@@ -252,7 +255,7 @@ void sortVals(int yyyy[], int MM[], int dd[], int DDD[], int HH[], int mm[], int
 		int i;
 		for (i = 0; i < Length; i = i + 2 * width)
 		{
-			Merge(yyyy, MM, dd, DDD, HH, mm, ss, Cscore, foF2, hmF2, foF1, foE, foEs, hEs, hmF1, hmE, B0, B1, i, (int)fmin(i + width, Length), (int)fmin(i + 2 * width, Length), Tyyyy, TMM, Tdd, TDDD,THH, Tmm, Tss, TCscore, TfoF2, ThmF2, TfoF1, TfoE, TfoEs, ThEs, ThmF1, ThmE, TB0, TB1);
+			Merge(yyyy, MM, dd, DDD, HH, mm, ss, Cscore, foF2, hmF2, foF1, foE, foEs, hEs, hmF1, hmE, B0, B1, i, (int)fmin(i + width, Length), (int)fmin(i + 2 * width, Length), Tyyyy, TMM, Tdd, TDDD, THH, Tmm, Tss, TCscore, TfoF2, ThmF2, TfoF1, TfoE, TfoEs, ThEs, ThmF1, ThmE, TB0, TB1);
 		}
 		ICopyArray(Tyyyy, yyyy, Length);
 		ICopyArray(TMM, MM, Length);
@@ -277,7 +280,7 @@ void sortVals(int yyyy[], int MM[], int dd[], int DDD[], int HH[], int mm[], int
 
 void Merge(int yyyy[], int MM[], int dd[], int DDD[], int HH[], int mm[], int ss[], int Cscore[], double foF2[], double hmF2[], double foF1[], double foE[], double foEs[], double hEs[], double hmF1[], double hmE[], double B0[], double B1[], int iLeft, int iRight, int iEnd, int Tyyyy[], int TMM[], int Tdd[], int TDDD[], int THH[], int Tmm[], int Tss[], int TCscore[], double TfoF2[], double ThmF2[], double TfoF1[], double TfoE[], double TfoEs[], double ThEs[], double ThmF1[], double ThmE[], double TB0[], double TB1[])
 {
-	int i = iLeft,  j = iRight;
+	int i = iLeft, j = iRight;
 	for (int k = iLeft; k < iEnd; k++) {
 
 		if (i < iRight && (j >= iEnd || DDD[i] > DDD[j] || (DDD[i] == DDD[j] && HH[i] > HH[j]) || (DDD[i] == DDD[j] && HH[i] == HH[j] && mm[i] > mm[j]) || (DDD[i] == DDD[j] && HH[i] == HH[j] && mm[i] == mm[j] && ss[i] >= ss[j])))
@@ -285,7 +288,7 @@ void Merge(int yyyy[], int MM[], int dd[], int DDD[], int HH[], int mm[], int ss
 			Tyyyy[k] = yyyy[i]; TMM[k] = MM[i]; Tdd[k] = dd[i]; TDDD[k] = DDD[i]; THH[k] = HH[i]; Tmm[k] = mm[i]; Tss[k] = ss[i]; TCscore[k] = Cscore[i];
 			TfoF2[k] = foF2[i]; ThmF2[k] = hmF2[i]; TfoF1[k] = foF1[i]; TfoE[k] = foE[i]; TfoEs[k] = foEs[i]; ThEs[k] = hEs[i]; ThmF1[k] = hmF1[i]; ThmE[k] = hmE[i]; TB0[k] = B0[i]; TB1[k] = B1[i];
 			i = i + 1;
-			
+
 		}
 		else {
 			Tyyyy[k] = yyyy[j]; TMM[k] = MM[j]; Tdd[k] = dd[j]; TDDD[k] = DDD[j]; THH[k] = HH[j]; Tmm[k] = mm[j]; Tss[k] = ss[j]; TCscore[k] = Cscore[j];
@@ -311,27 +314,31 @@ void DCopyArray(double B[], double A[], int Length)
 
 double  Medianfinder(double A[], int Length)
 {
-	// Do a merge sort of the
 	double B[500];
+	double C[500];
+	// Copy the array first to not change it.
+	DCopyArray(A, C, Length);
+	// Do a merge sort of the the Copy
+	
 	for (int width = 1; width < Length; width = 2 * width)
 	{
 		for (int i = 0; i < Length; i = i + 2 * width)
 		{
-			SMerge(A, i, (int)fmin(i + width, Length), (int)fmin(i + 2 * width, Length), B);
+			SMerge(C, i, (int)fmin(i + width, Length), (int)fmin(i + 2 * width, Length), B);
 		}
-		DCopyArray(B, A, Length);
+		DCopyArray(B, C, Length);
 	}
-	printf("%d\n", Length);
+	//Return the Median
 	if (Length % 2 == 1)
 	{
-		return A[(Length-1) / 2];
+		return C[(Length - 1) / 2];
 	}
 	else
 	{
-		return (A[(Length / 2)-1]+ A[(Length / 2)])/2;
+		return (C[(Length / 2) - 1] + C[(Length / 2)]) / 2;
 	}
 }
-
+// Medianfinders merge sort merger
 void SMerge(double A[], int iLeft, int iRight, int iEnd, double B[])
 {
 	int i = iLeft, j = iRight;
