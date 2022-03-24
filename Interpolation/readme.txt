@@ -1,8 +1,8 @@
 gnu script should be runable with gnuplot by "open script file" gnu script with data.dat and data2.dat in the same folder as gnu script.
+plot.png is an example plot using gnuplot.  
+The green x's are the interpolated points and the large red stars are the given points.
 
-plot.png is an example plot using gnuplot.
-
-interpolation.py is a python program that can make data2.dat.
+interpolation.py is a python program that can make data2.dat.  The given points are within the code and therefore it does not need data.dat with it.
 
 In interpolation.py I used the interpolation method of Inverse Distance Weighted or IDW.
 The Inverse Distance Weighting interpolation assumes that each input point has a local weight that diminishes with distance.
