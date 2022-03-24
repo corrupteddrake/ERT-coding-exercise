@@ -65,8 +65,8 @@ y_min=10.0
 y_max=16.0
 w=x_max-x_min #width
 h=y_max-y_min #length
-wn=w/nx #x interval
-hn=h/ny #y interval
+wn=w/(nx-1) #x interval
+hn=h/(ny-1) #y interval
 
 #list to store interpolation point and elevation
 y_init=y_min
