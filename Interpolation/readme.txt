@@ -1,4 +1,8 @@
-gnu script should be runable with gnuplot by "open script file" gnu script with data.dat and data2.dat in the same folder as gnu script.
+data.dat is the given points.
+data2.dat is the interpolated points.
+
+gnu script is runable with gnuplot by "open script file" gnu script with data.dat and data2.dat in the same folder as gnu script.
+
 plot.png is an example plot using gnuplot.  
 The green x's are the interpolated points and the large red stars are the given points.
 
