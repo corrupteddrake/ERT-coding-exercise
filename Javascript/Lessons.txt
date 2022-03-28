@@ -1,0 +1,3 @@
+The lesson I learned doing this assessment is how to use javascript in the first place.
+I had never written in javascript before.
+I am glad I did this assesment because I find javascript to be a very useful language and I would like to program more javascript in the future.
