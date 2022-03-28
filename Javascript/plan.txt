@@ -1,0 +1,4 @@
+Write a web page with a 400x400 pixel canvas and a single button.
+Use jquery to listen for the button click event,
+Draw a filled circle 1/2 the size of the canvas in the upper right-hand corner of the canvas
+Then draw a filled ellipse in the lower left-hand corner of the canvas.
