@@ -1,4 +1,4 @@
-The lesson I mainly learned doing this Assessment are two fold.
+The lesson I learned doing this Assessment are two fold.
 
 1) I have been programing in C++ and C# for many years but I have basicallly only took a single class in the C programing language
 and so I was able to brush the rust off my C Language skills.
