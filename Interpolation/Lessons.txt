@@ -1,0 +1,1 @@
+The lesson I learned doing this Assessment is that I had never writen a Inverse Distance Weighted interpolation program in python and so let me learn how to do so.
