@@ -1,0 +1,4 @@
+Decide on the interpolate that should be used.
+Use python to write an interpolate program.
+Use the python program to interpolate the 50 rows and 70 columns with a longitude range [121.0, 131.0] and latitude range [10.0, 16.0].  
+Use gnuplot to plot the interpolated points with the original points as larger stars.
