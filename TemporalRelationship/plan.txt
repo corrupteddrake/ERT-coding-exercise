@@ -1,0 +1,23 @@
+main{
+Declare variables.
+Read the file
+Sort the values from file
+Write the file
+Find and print the median of foF2 and hmF2.
+}
+
+Readfile{
+Read the data and assign the values to arrays.
+}
+
+Sortvalues{
+Use a Merge Sort to sort the values from the oldest to the newest.
+}
+
+Writefile{
+Write the values into the file.
+}
+
+Findmedian{
+Sort the values that you want to take the median of and take the middle one.  if there are two middles then average them and return that.
+}
