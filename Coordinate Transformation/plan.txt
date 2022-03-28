@@ -1,0 +1,15 @@
+Main{
+Define Radar coordinates and GIS coordinates
+Call GIS2Radar to take our initial GIS coordinates and convert to radar coordinates
+Print radar coordinates
+Call RtoG to take our radar coordinates and convert to back to GIS coordinates
+Print GIS coordinates
+}
+
+GIS2Radar{
+Calculate range and bearing using GIS coordinates.
+}
+
+RtoG{
+Calculate GIS coordinates using range and bearing.
+}
