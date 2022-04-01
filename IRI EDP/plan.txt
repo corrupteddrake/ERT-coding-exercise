@@ -1,5 +1,5 @@
 Download iri2016 at (http://irimodel.org) and all files necessary.
-Download a free fortran 77 compiler.
+Download a free fortran compiler.
 Download gnuplot.
 Test iri2016.
 Make a simple Makefile that can compile iri2016 and generate shared object of Mar 3 2021 UT 11:00:00 and Mar 4, 2021 UT 23:00:00 at Lat 37.8N and Lon 75.4W 
