@@ -1,9 +1,13 @@
+The Folder "00_iri" has all the fortran code needed to run 
+as well as "makefile.win" which compiles and runs the fortran code 
+and "iri.exe" which is the compiled fortran code that can be run.
+
 "makefile.win" is the makefile that will compile and run the fortran code assuming that it is in the same folder.
-"nmake -f Makefile.win" in command prompt will run it.
+"nmake -f Makefile.win" in command prompt in the same directory will run it.
 It was originally designed for windows computers.
 
 The dat files "IRI EDP.dat" and "IRI EDP2.dat" are currently created with https://ccmc.gsfc.nasa.gov/modelweb/models/iri2016_vitmo.php
-Because I had a hard time getting iri2016 to work.  They will be changed in the future now that iri2016 can be compiled.
+Because I originally had a hard time getting iri2016 to work.  They will be changed in the future now that iri2016 can be compiled.
 
 "IRI EDP" is the script file for gnuplot for ploting "IRI EDP.dat"
 
