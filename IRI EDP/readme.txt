@@ -6,24 +6,23 @@ and "iri.exe" which is the compiled fortran code that can be run.
 "nmake -f Makefile.win" in command prompt in the same directory will run it.
 It was originally designed for windows computers.
 
-The dat files "IRI EDP.dat" and "IRI EDP2.dat" are currently created with https://ccmc.gsfc.nasa.gov/modelweb/models/iri2016_vitmo.php
-Because I originally had a hard time getting iri2016 to work.  They will be changed in the future now that iri2016 can be compiled.
+"full IRI EDP.dat" is the full data given by "iri.exe" it includes both plots.
 
 "IRI EDP" is the script file for gnuplot for ploting "IRI EDP.dat"
 
-"IRI EDP.dat" is the dat file created by using 
-Time_type = Universal, Year= 2021., Month= 03, Day= 03, Hour=11.
-Coordinate_type = Geographic, Latitude= 37.8, Longitude= 284.6, Height= 100.
+"IRI EDP.dat" is the dat file created by using the first data in "full IRI EDP.dat"
+yyyy/mmdd(or -ddd)/hh.h):2021/ 303/11.0UT  geog Lat/Long/Alt= 37.8/ 284.6/ 100.0
 Prof. parameters: Start= 100. Stop= 2000. Step= 50.
 
 "IRI EDP.png" is the plot made by gnuplot for "IRI EDP.dat"
+The Y-axis is Height in km and the X-axis is Electron_density in Ne/cm-3
 
 
 "IRI EDP2" is the script file for gnuplot for ploting "IRI EDP2.dat"
 
-"IRI EDP2.dat" is the dat file created by using 
-Time_type = Universal, Year= 2021., Month= 03, Day= 04, Hour=23.
-Coordinate_type = Geographic, Latitude= 37.8, Longitude= 284.6, Height= 100.
+"IRI EDP2.dat" is the dat file created by using the second data in "full IRI EDP.dat" 
+yyyy/mmdd(or -ddd)/hh.h):2021/ 304/23.0UT  geog Lat/Long/Alt= 37.8/ 284.6/ 100.0
 Prof. parameters: Start= 100. Stop= 2000. Step= 50.
 
 "IRI EDP2.png" is the plot made by gnuplot for "IRI EDP.dat"
+The Y-axis is Height in km and the X-axis is Electron_density in Ne/cm-3
