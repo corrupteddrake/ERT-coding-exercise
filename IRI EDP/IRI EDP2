@@ -171,5 +171,5 @@ GNUTERM = "qt"
 I = {0.0, 1.0}
 VoxelDistance = 0.0
 ## Last datafile plotted: "IRI EDP2.dat"
-splot "IRI EDP2.dat"
+plot "IRI EDP2.dat" u 2:1
 #    EOF
