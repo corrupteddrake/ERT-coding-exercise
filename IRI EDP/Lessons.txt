@@ -1,2 +1,2 @@
-The assesment is not completely finished yet.
-Lessons so far are mostly how to download and run many different free Fortran compilers and finally finding one that works, which is the intel Fortran compiler.
+The lesson I learned doing this Assessment is how to download and run many different free Fortran compilers and finally finding one that works, which is the intel Fortran compiler.
+I used Gnuplot in a different assessment and didn't learn anything new by using it.
