@@ -1,10 +1,14 @@
-data.dat is the given points.
-data2.dat is the interpolated points.
+"data.dat" is the given points.
+"data2.dat" is the interpolated points.
 
-gnu script is runable with gnuplot by "open script file" gnu script with data.dat and data2.dat in the same folder as gnu script.
+"gnu script" is runable with gnuplot by "open script file" gnu script with data.dat and data2.dat in the same folder as gnu script.  This is the 3d script.
+"gnu script2d" is runable with gnuplot by "open script file" gnu script with data.dat and data2.dat in the same folder as gnu script.  This is the 2d script.
 
-plot.png is an example plot using gnuplot.  
+"plot.png" is an example 3d plot using gnuplot. 
 The green x's are the interpolated points and the large red stars are the given points.
+
+"2dplot.png" is an example 2d plot using gnuplot. 
+The large blue stars are the given points and the small red circles are the interpolated points.
 
 interpolation.py is a python program that can make data2.dat.  The given points are within the code and therefore it does not need data.dat with it.
 
