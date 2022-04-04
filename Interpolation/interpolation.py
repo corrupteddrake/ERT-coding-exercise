@@ -25,7 +25,7 @@ def idw_npoint(xz, yz, n_point, p):
         x_block = []
         y_block = []
         z_block = []
-        r += 1  # add 10 unit each iteration
+        r += 1  # add 1 unit each iteration
         xr_min = xz - r
         xr_max = xz + r
         yr_min = yz - r
